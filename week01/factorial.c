@@ -11,6 +11,9 @@ int main(void) {
 }
 
 int factorial(int n) {
-    // todo
-    return -1;
+    if (n == 1) {
+        return 1;
+    }
+
+    return n * factorial(n - 1);
 }
