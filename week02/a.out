@@ -1,0 +1,623 @@
+	.text
+	.file	"factorial.c"
+	.globl	main                            # -- Begin function main
+	.p2align	4, 0x90
+	.type	main,@function
+main:                                   # @main
+.Lfunc_begin0:
+	.file	1 "/import/cage/2/z5311740/comp1521-24t2/week02" "factorial.c"
+	.loc	1 6 0                           # factorial.c:6:0
+	.cfi_startproc
+# %bb.0:                                # %entry
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	pushq	%rbx
+	andq	$-32, %rsp
+	subq	$160, %rsp
+	movq	%rsp, %rbx
+	.cfi_offset %rbx, -24
+	xorl	%eax, %eax
+                                        # kill: def $rax killed $eax
+	movq	__asan_option_detect_stack_use_after_return@GOTPCREL(%rip), %rcx
+	cmpl	$0, (%rcx)
+	movq	%rax, 88(%rbx)                  # 8-byte Spill
+	je	.LBB0_2
+# %bb.1:
+	movl	$64, %edi
+	callq	__asan_stack_malloc_0@PLT
+	movq	%rax, 88(%rbx)                  # 8-byte Spill
+.LBB0_2:
+	movq	88(%rbx), %rax                  # 8-byte Reload
+	movq	%rax, 72(%rbx)                  # 8-byte Spill
+	cmpq	$0, %rax
+	movq	%rax, 80(%rbx)                  # 8-byte Spill
+	jne	.LBB0_4
+# %bb.3:
+	movq	%rsp, %rax
+	addq	$-64, %rax
+	andq	$-32, %rax
+	movq	%rax, %rsp
+	movq	%rax, 80(%rbx)                  # 8-byte Spill
+.LBB0_4:
+	movq	80(%rbx), %rax                  # 8-byte Reload
+	movq	%rax, 48(%rbx)                  # 8-byte Spill
+	movq	%rax, 112(%rbx)
+	movq	%rax, %rcx
+	addq	$32, %rcx
+	movq	%rcx, 64(%rbx)                  # 8-byte Spill
+	movq	$1102416563, (%rax)             # imm = 0x41B58AB3
+	leaq	.L___asan_gen_(%rip), %rcx
+	movq	%rcx, 8(%rax)
+	leaq	main(%rip), %rcx
+	movq	%rcx, 16(%rax)
+	shrq	$3, %rax
+	movq	%rax, %rcx
+	addq	$2147450880, %rcx               # imm = 0x7FFF8000
+	movq	%rcx, 56(%rbx)                  # 8-byte Spill
+	movabsq	$-868082052615769615, %rcx      # imm = 0xF3F3F3F8F1F1F1F1
+	movq	%rcx, 2147450880(%rax)
+	movl	$0, 132(%rbx)
+.Ltmp0:
+	.loc	1 7 5 prologue_end              # factorial.c:7:5
+	movb	$4, 2147450884(%rax)
+	.loc	1 8 5                           # factorial.c:8:5
+	leaq	.str(%rip), %rdi
+	movb	$0, %al
+	callq	printf@PLT
+	movq	64(%rbx), %rsi                  # 8-byte Reload
+	.loc	1 9 5                           # factorial.c:9:5
+	leaq	.str.1(%rip), %rdi
+	movb	$0, %al
+	callq	__isoc99_scanf@PLT
+	.loc	1 11 9                          # factorial.c:11:9
+	movl	$1, 128(%rbx)
+.Ltmp1:
+	.loc	1 12 14                         # factorial.c:12:14
+	movl	$1, 124(%rbx)
+.LBB0_5:                                # %for.cond
+                                        # =>This Inner Loop Header: Depth=1
+	.loc	1 0 14 is_stmt 0                # factorial.c:0:14
+	movq	64(%rbx), %rax                  # 8-byte Reload
+.Ltmp2:
+	.loc	1 12 21                         # factorial.c:12:21
+	movl	124(%rbx), %ecx
+	movl	%ecx, 40(%rbx)                  # 4-byte Spill
+	.loc	1 12 26                         # factorial.c:12:26
+	shrq	$3, %rax
+	movb	2147450880(%rax), %al
+	movb	%al, 47(%rbx)                   # 1-byte Spill
+	cmpb	$0, %al
+	je	.LBB0_8
+# %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
+	.loc	1 0 26                          # factorial.c:0:26
+	movb	47(%rbx), %cl                   # 1-byte Reload
+	movq	64(%rbx), %rax                  # 8-byte Reload
+	.loc	1 12 26                         # factorial.c:12:26
+	andq	$7, %rax
+	addq	$3, %rax
+                                        # kill: def $al killed $al killed $rax
+	cmpb	%cl, %al
+	jl	.LBB0_8
+# %bb.7:
+	.loc	1 0 26                          # factorial.c:0:26
+	movq	64(%rbx), %rdi                  # 8-byte Reload
+	.loc	1 12 26                         # factorial.c:12:26
+	callq	__asan_report_load4@PLT
+.LBB0_8:                                #   in Loop: Header=BB0_5 Depth=1
+	.loc	1 0 26                          # factorial.c:0:26
+	movl	40(%rbx), %eax                  # 4-byte Reload
+	movq	64(%rbx), %rcx                  # 8-byte Reload
+	.loc	1 12 23                         # factorial.c:12:23
+	cmpl	(%rcx), %eax
+.Ltmp3:
+	.loc	1 12 5                          # factorial.c:12:5
+	jle	.LBB0_10
+# %bb.9:                                # %for.cond.cleanup
+	.loc	1 0 5                           # factorial.c:0:5
+	jmp	.LBB0_16
+.LBB0_10:                               # %for.body
+                                        #   in Loop: Header=BB0_5 Depth=1
+.Ltmp4:
+	.loc	1 13 16 is_stmt 1               # factorial.c:13:16
+	movl	124(%rbx), %ecx
+	movl	%ecx, 28(%rbx)                  # 4-byte Spill
+	.loc	1 13 13 is_stmt 0               # factorial.c:13:13
+	movl	128(%rbx), %eax
+	movl	%eax, 32(%rbx)                  # 4-byte Spill
+	imull	%ecx, %eax
+	movl	%eax, 36(%rbx)                  # 4-byte Spill
+	seto	%al
+	xorb	$-1, %al
+	testb	$1, %al
+	jne	.LBB0_12
+# %bb.11:                               # %handler.mul_overflow
+                                        #   in Loop: Header=BB0_5 Depth=1
+	.loc	1 0 13                          # factorial.c:0:13
+	movl	28(%rbx), %eax                  # 4-byte Reload
+	movl	32(%rbx), %ecx                  # 4-byte Reload
+	.loc	1 13 13                         # factorial.c:13:13
+	movl	%ecx, %ecx
+	movl	%ecx, %esi
+	movl	%eax, %eax
+	movl	%eax, %edx
+	leaq	.L__unnamed_1(%rip), %rdi
+	callq	__ubsan_handle_mul_overflow@PLT
+.LBB0_12:                               # %cont
+                                        #   in Loop: Header=BB0_5 Depth=1
+	.loc	1 0 13                          # factorial.c:0:13
+	movl	36(%rbx), %eax                  # 4-byte Reload
+	.loc	1 13 13                         # factorial.c:13:13
+	movl	%eax, 128(%rbx)
+.Ltmp5:
+# %bb.13:                               # %for.inc
+                                        #   in Loop: Header=BB0_5 Depth=1
+	.loc	1 12 30 is_stmt 1               # factorial.c:12:30
+	movl	124(%rbx), %eax
+	movl	%eax, 20(%rbx)                  # 4-byte Spill
+	incl	%eax
+	movl	%eax, 24(%rbx)                  # 4-byte Spill
+	seto	%al
+	xorb	$-1, %al
+	testb	$1, %al
+	jne	.LBB0_15
+# %bb.14:                               # %handler.add_overflow
+                                        #   in Loop: Header=BB0_5 Depth=1
+	.loc	1 0 30 is_stmt 0                # factorial.c:0:30
+	movl	20(%rbx), %eax                  # 4-byte Reload
+	.loc	1 12 30                         # factorial.c:12:30
+	movl	%eax, %eax
+	movl	%eax, %esi
+	leaq	.L__unnamed_2(%rip), %rdi
+	movl	$1, %edx
+	callq	__ubsan_handle_add_overflow@PLT
+.LBB0_15:                               # %cont2
+                                        #   in Loop: Header=BB0_5 Depth=1
+	.loc	1 0 30                          # factorial.c:0:30
+	movl	24(%rbx), %eax                  # 4-byte Reload
+	.loc	1 12 30                         # factorial.c:12:30
+	movl	%eax, 124(%rbx)
+	.loc	1 12 5                          # factorial.c:12:5
+	jmp	.LBB0_5
+.Ltmp6:
+.LBB0_16:                               # %for.end
+	.loc	1 16 25 is_stmt 1               # factorial.c:16:25
+	movl	128(%rbx), %esi
+	.loc	1 16 5 is_stmt 0                # factorial.c:16:5
+	leaq	.str.2(%rip), %rdi
+	movb	$0, %al
+	callq	printf@PLT
+	movq	56(%rbx), %rdx                  # 8-byte Reload
+	movq	48(%rbx), %rcx                  # 8-byte Reload
+                                        # kill: def $esi killed $eax
+	movq	72(%rbx), %rax                  # 8-byte Reload
+	.loc	1 18 1 is_stmt 1                # factorial.c:18:1
+	movb	$-8, 4(%rdx)
+	.loc	1 17 5                          # factorial.c:17:5
+	movq	$1172321806, (%rcx)             # imm = 0x45E0360E
+	cmpq	$0, %rax
+	je	.LBB0_18
+# %bb.17:
+	.loc	1 0 5 is_stmt 0                 # factorial.c:0:5
+	movq	72(%rbx), %rax                  # 8-byte Reload
+	movq	56(%rbx), %rcx                  # 8-byte Reload
+	.loc	1 17 5                          # factorial.c:17:5
+	movabsq	$-723401728380766731, %rdx      # imm = 0xF5F5F5F5F5F5F5F5
+	movq	%rdx, (%rcx)
+	movq	56(%rax), %rax
+	movb	$0, (%rax)
+	jmp	.LBB0_19
+.LBB0_18:
+	.loc	1 0 5                           # factorial.c:0:5
+	movq	56(%rbx), %rax                  # 8-byte Reload
+	.loc	1 17 5                          # factorial.c:17:5
+	movq	$0, (%rax)
+.LBB0_19:
+	xorl	%eax, %eax
+	leaq	-8(%rbp), %rsp
+	popq	%rbx
+	popq	%rbp
+	.cfi_def_cfa %rsp, 8
+	retq
+.Ltmp7:
+.Lfunc_end0:
+	.size	main, .Lfunc_end0-main
+	.cfi_endproc
+                                        # -- End function
+	.section	.text.asan.module_ctor,"axR",@progbits
+	.p2align	4, 0x90                         # -- Begin function asan.module_ctor
+	.type	asan.module_ctor,@function
+asan.module_ctor:                       # @asan.module_ctor
+.Lfunc_begin1:
+	.cfi_startproc
+# %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	callq	__asan_init@PLT
+	callq	__asan_version_mismatch_check_v8@PLT
+	leaq	__unnamed_3(%rip), %rdi
+	movl	$3, %esi
+	callq	__asan_register_globals@PLT
+	popq	%rbp
+	.cfi_def_cfa %rsp, 8
+	retq
+.Lfunc_end1:
+	.size	asan.module_ctor, .Lfunc_end1-asan.module_ctor
+	.cfi_endproc
+                                        # -- End function
+	.section	.text.asan.module_dtor,"axR",@progbits
+	.p2align	4, 0x90                         # -- Begin function asan.module_dtor
+	.type	asan.module_dtor,@function
+asan.module_dtor:                       # @asan.module_dtor
+.Lfunc_begin2:
+	.cfi_startproc
+# %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	leaq	__unnamed_3(%rip), %rdi
+	movl	$3, %esi
+	callq	__asan_unregister_globals@PLT
+	popq	%rbp
+	.cfi_def_cfa %rsp, 8
+	retq
+.Lfunc_end2:
+	.size	asan.module_dtor, .Lfunc_end2-asan.module_dtor
+	.cfi_endproc
+                                        # -- End function
+	.type	.str,@object                    # @.str
+	.section	.rodata,"a",@progbits
+	.p2align	5
+.str:
+	.asciz	"n  = "
+	.zero	26
+	.size	.str, 32
+
+	.type	.str.1,@object                  # @.str.1
+	.p2align	5
+.str.1:
+	.asciz	"%d"
+	.zero	29
+	.size	.str.1, 32
+
+	.type	.L.src,@object                  # @.src
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L.src:
+	.asciz	"factorial.c"
+	.size	.L.src, 12
+
+	.type	.L__unnamed_4,@object           # @0
+	.section	.rodata,"a",@progbits
+	.p2align	3
+.L__unnamed_4:
+	.short	0                               # 0x0
+	.short	11                              # 0xb
+	.asciz	"'int'"
+	.size	.L__unnamed_4, 10
+
+	.type	.L__unnamed_1,@object           # @1
+	.data
+	.p2align	4
+.L__unnamed_1:
+	.quad	.L.src
+	.long	13                              # 0xd
+	.long	13                              # 0xd
+	.quad	.L__unnamed_4
+	.size	.L__unnamed_1, 24
+
+	.type	.L__unnamed_2,@object           # @2
+	.p2align	4
+.L__unnamed_2:
+	.quad	.L.src
+	.long	12                              # 0xc
+	.long	30                              # 0x1e
+	.quad	.L__unnamed_4
+	.size	.L__unnamed_2, 24
+
+	.type	.str.2,@object                  # @.str.2
+	.section	.rodata,"a",@progbits
+	.p2align	5
+.str.2:
+	.asciz	"n! = %d\n"
+	.zero	23
+	.size	.str.2, 32
+
+	.type	.L___asan_gen_,@object          # @___asan_gen_
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L___asan_gen_:
+	.asciz	"1 32 4 3 n:7"
+	.size	.L___asan_gen_, 13
+
+	.type	.L___asan_gen_.3,@object        # @___asan_gen_.3
+	.section	.rodata,"a",@progbits
+.L___asan_gen_.3:
+	.asciz	"factorial.c"
+	.size	.L___asan_gen_.3, 12
+
+	.type	.L___asan_gen_.4,@object        # @___asan_gen_.4
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L___asan_gen_.4:
+	.asciz	"<string literal>"
+	.size	.L___asan_gen_.4, 17
+
+	.type	.L___asan_gen_.5,@object        # @___asan_gen_.5
+.L___asan_gen_.5:
+	.asciz	"factorial.c"
+	.size	.L___asan_gen_.5, 12
+
+	.type	.L___asan_gen_.6,@object        # @___asan_gen_.6
+	.section	.data.rel.ro,"aw",@progbits
+	.p2align	3
+.L___asan_gen_.6:
+	.quad	.L___asan_gen_.5
+	.long	8                               # 0x8
+	.long	12                              # 0xc
+	.size	.L___asan_gen_.6, 16
+
+	.type	.L___asan_gen_.7,@object        # @___asan_gen_.7
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L___asan_gen_.7:
+	.asciz	"<string literal>"
+	.size	.L___asan_gen_.7, 17
+
+	.type	.L___asan_gen_.8,@object        # @___asan_gen_.8
+.L___asan_gen_.8:
+	.asciz	"factorial.c"
+	.size	.L___asan_gen_.8, 12
+
+	.type	.L___asan_gen_.9,@object        # @___asan_gen_.9
+	.section	.data.rel.ro,"aw",@progbits
+	.p2align	3
+.L___asan_gen_.9:
+	.quad	.L___asan_gen_.8
+	.long	9                               # 0x9
+	.long	11                              # 0xb
+	.size	.L___asan_gen_.9, 16
+
+	.type	.L___asan_gen_.10,@object       # @___asan_gen_.10
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.L___asan_gen_.10:
+	.asciz	"<string literal>"
+	.size	.L___asan_gen_.10, 17
+
+	.type	.L___asan_gen_.11,@object       # @___asan_gen_.11
+.L___asan_gen_.11:
+	.asciz	"factorial.c"
+	.size	.L___asan_gen_.11, 12
+
+	.type	.L___asan_gen_.12,@object       # @___asan_gen_.12
+	.section	.data.rel.ro,"aw",@progbits
+	.p2align	3
+.L___asan_gen_.12:
+	.quad	.L___asan_gen_.11
+	.long	16                              # 0x10
+	.long	12                              # 0xc
+	.size	.L___asan_gen_.12, 16
+
+	.type	__unnamed_3,@object             # @3
+	.data
+	.p2align	4
+__unnamed_3:
+	.quad	.str
+	.quad	6                               # 0x6
+	.quad	32                              # 0x20
+	.quad	.L___asan_gen_.4
+	.quad	.L___asan_gen_.3
+	.quad	0                               # 0x0
+	.quad	.L___asan_gen_.6
+	.quad	-1                              # 0xffffffffffffffff
+	.quad	.str.1
+	.quad	3                               # 0x3
+	.quad	32                              # 0x20
+	.quad	.L___asan_gen_.7
+	.quad	.L___asan_gen_.3
+	.quad	0                               # 0x0
+	.quad	.L___asan_gen_.9
+	.quad	-1                              # 0xffffffffffffffff
+	.quad	.str.2
+	.quad	9                               # 0x9
+	.quad	32                              # 0x20
+	.quad	.L___asan_gen_.10
+	.quad	.L___asan_gen_.3
+	.quad	0                               # 0x0
+	.quad	.L___asan_gen_.12
+	.quad	-1                              # 0xffffffffffffffff
+	.size	__unnamed_3, 192
+
+	.section	.init_array.1,"aw",@init_array
+	.p2align	3
+	.quad	asan.module_ctor
+	.section	.fini_array.1,"aw",@fini_array
+	.p2align	3
+	.quad	asan.module_dtor
+	.section	.debug_abbrev,"",@progbits
+	.byte	1                               # Abbreviation Code
+	.byte	17                              # DW_TAG_compile_unit
+	.byte	1                               # DW_CHILDREN_yes
+	.byte	37                              # DW_AT_producer
+	.byte	14                              # DW_FORM_strp
+	.byte	19                              # DW_AT_language
+	.byte	5                               # DW_FORM_data2
+	.byte	3                               # DW_AT_name
+	.byte	14                              # DW_FORM_strp
+	.byte	16                              # DW_AT_stmt_list
+	.byte	23                              # DW_FORM_sec_offset
+	.byte	27                              # DW_AT_comp_dir
+	.byte	14                              # DW_FORM_strp
+	.byte	17                              # DW_AT_low_pc
+	.byte	1                               # DW_FORM_addr
+	.byte	18                              # DW_AT_high_pc
+	.byte	6                               # DW_FORM_data4
+	.byte	0                               # EOM(1)
+	.byte	0                               # EOM(2)
+	.byte	2                               # Abbreviation Code
+	.byte	46                              # DW_TAG_subprogram
+	.byte	1                               # DW_CHILDREN_yes
+	.byte	17                              # DW_AT_low_pc
+	.byte	1                               # DW_FORM_addr
+	.byte	18                              # DW_AT_high_pc
+	.byte	6                               # DW_FORM_data4
+	.byte	64                              # DW_AT_frame_base
+	.byte	24                              # DW_FORM_exprloc
+	.byte	3                               # DW_AT_name
+	.byte	14                              # DW_FORM_strp
+	.byte	58                              # DW_AT_decl_file
+	.byte	11                              # DW_FORM_data1
+	.byte	59                              # DW_AT_decl_line
+	.byte	11                              # DW_FORM_data1
+	.byte	39                              # DW_AT_prototyped
+	.byte	25                              # DW_FORM_flag_present
+	.byte	73                              # DW_AT_type
+	.byte	19                              # DW_FORM_ref4
+	.byte	63                              # DW_AT_external
+	.byte	25                              # DW_FORM_flag_present
+	.byte	0                               # EOM(1)
+	.byte	0                               # EOM(2)
+	.byte	3                               # Abbreviation Code
+	.byte	52                              # DW_TAG_variable
+	.byte	0                               # DW_CHILDREN_no
+	.byte	2                               # DW_AT_location
+	.byte	24                              # DW_FORM_exprloc
+	.byte	3                               # DW_AT_name
+	.byte	14                              # DW_FORM_strp
+	.byte	58                              # DW_AT_decl_file
+	.byte	11                              # DW_FORM_data1
+	.byte	59                              # DW_AT_decl_line
+	.byte	11                              # DW_FORM_data1
+	.byte	73                              # DW_AT_type
+	.byte	19                              # DW_FORM_ref4
+	.byte	0                               # EOM(1)
+	.byte	0                               # EOM(2)
+	.byte	4                               # Abbreviation Code
+	.byte	11                              # DW_TAG_lexical_block
+	.byte	1                               # DW_CHILDREN_yes
+	.byte	17                              # DW_AT_low_pc
+	.byte	1                               # DW_FORM_addr
+	.byte	18                              # DW_AT_high_pc
+	.byte	6                               # DW_FORM_data4
+	.byte	0                               # EOM(1)
+	.byte	0                               # EOM(2)
+	.byte	5                               # Abbreviation Code
+	.byte	36                              # DW_TAG_base_type
+	.byte	0                               # DW_CHILDREN_no
+	.byte	3                               # DW_AT_name
+	.byte	14                              # DW_FORM_strp
+	.byte	62                              # DW_AT_encoding
+	.byte	11                              # DW_FORM_data1
+	.byte	11                              # DW_AT_byte_size
+	.byte	11                              # DW_FORM_data1
+	.byte	0                               # EOM(1)
+	.byte	0                               # EOM(2)
+	.byte	0                               # EOM(3)
+	.section	.debug_info,"",@progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 # Length of Unit
+.Ldebug_info_start0:
+	.short	4                               # DWARF version number
+	.long	.debug_abbrev                   # Offset Into Abbrev. Section
+	.byte	8                               # Address Size (in bytes)
+	.byte	1                               # Abbrev [1] 0xb:0x7f DW_TAG_compile_unit
+	.long	.Linfo_string0                  # DW_AT_producer
+	.short	12                              # DW_AT_language
+	.long	.Linfo_string1                  # DW_AT_name
+	.long	.Lline_table_start0             # DW_AT_stmt_list
+	.long	.Linfo_string2                  # DW_AT_comp_dir
+	.quad	.Lfunc_begin0                   # DW_AT_low_pc
+	.long	.Lfunc_end0-.Lfunc_begin0       # DW_AT_high_pc
+	.byte	2                               # Abbrev [2] 0x2a:0x58 DW_TAG_subprogram
+	.quad	.Lfunc_begin0                   # DW_AT_low_pc
+	.long	.Lfunc_end0-.Lfunc_begin0       # DW_AT_high_pc
+	.byte	1                               # DW_AT_frame_base
+	.byte	86
+	.long	.Linfo_string3                  # DW_AT_name
+	.byte	1                               # DW_AT_decl_file
+	.byte	6                               # DW_AT_decl_line
+                                        # DW_AT_prototyped
+	.long	130                             # DW_AT_type
+                                        # DW_AT_external
+	.byte	3                               # Abbrev [3] 0x43:0x12 DW_TAG_variable
+	.byte	6                               # DW_AT_location
+	.byte	115
+	.asciz	"\360"
+	.byte	6
+	.byte	35
+	.byte	32
+	.long	.Linfo_string5                  # DW_AT_name
+	.byte	1                               # DW_AT_decl_file
+	.byte	7                               # DW_AT_decl_line
+	.long	130                             # DW_AT_type
+	.byte	3                               # Abbrev [3] 0x55:0xf DW_TAG_variable
+	.byte	3                               # DW_AT_location
+	.byte	115
+	.ascii	"\200\001"
+	.long	.Linfo_string6                  # DW_AT_name
+	.byte	1                               # DW_AT_decl_file
+	.byte	11                              # DW_AT_decl_line
+	.long	130                             # DW_AT_type
+	.byte	4                               # Abbrev [4] 0x64:0x1d DW_TAG_lexical_block
+	.quad	.Ltmp1                          # DW_AT_low_pc
+	.long	.Ltmp6-.Ltmp1                   # DW_AT_high_pc
+	.byte	3                               # Abbrev [3] 0x71:0xf DW_TAG_variable
+	.byte	3                               # DW_AT_location
+	.byte	115
+	.asciz	"\374"
+	.long	.Linfo_string7                  # DW_AT_name
+	.byte	1                               # DW_AT_decl_file
+	.byte	12                              # DW_AT_decl_line
+	.long	130                             # DW_AT_type
+	.byte	0                               # End Of Children Mark
+	.byte	0                               # End Of Children Mark
+	.byte	5                               # Abbrev [5] 0x82:0x7 DW_TAG_base_type
+	.long	.Linfo_string4                  # DW_AT_name
+	.byte	5                               # DW_AT_encoding
+	.byte	4                               # DW_AT_byte_size
+	.byte	0                               # End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_str,"MS",@progbits,1
+.Linfo_string0:
+	.asciz	"Debian clang version 14.0.6"   # string offset=0
+.Linfo_string1:
+	.asciz	"factorial.c"                   # string offset=28
+.Linfo_string2:
+	.asciz	"/import/cage/2/z5311740/comp1521-24t2/week02" # string offset=40
+.Linfo_string3:
+	.asciz	"main"                          # string offset=85
+.Linfo_string4:
+	.asciz	"int"                           # string offset=90
+.Linfo_string5:
+	.asciz	"n"                             # string offset=94
+.Linfo_string6:
+	.asciz	"fac"                           # string offset=96
+.Linfo_string7:
+	.asciz	"i"                             # string offset=100
+	.ident	"Debian clang version 14.0.6"
+	.section	".note.GNU-stack","",@progbits
+	.addrsig
+	.addrsig_sym main
+	.addrsig_sym printf
+	.addrsig_sym __isoc99_scanf
+	.addrsig_sym __ubsan_handle_mul_overflow
+	.addrsig_sym __ubsan_handle_add_overflow
+	.addrsig_sym __asan_report_load4
+	.addrsig_sym __asan_stack_malloc_0
+	.addrsig_sym __asan_register_globals
+	.addrsig_sym __asan_unregister_globals
+	.addrsig_sym __asan_init
+	.addrsig_sym asan.module_ctor
+	.addrsig_sym __asan_version_mismatch_check_v8
+	.addrsig_sym asan.module_dtor
+	.addrsig_sym .str
+	.addrsig_sym .str.1
+	.addrsig_sym .str.2
+	.addrsig_sym __asan_option_detect_stack_use_after_return
+	.addrsig_sym .L___asan_gen_.3
+	.addrsig_sym __unnamed_3
+	.section	.debug_line,"",@progbits
+.Lline_table_start0:
