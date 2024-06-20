@@ -42,6 +42,26 @@ main__col_cond:
     	bge	$t1,	12,	main__col_false		# if (col >= 12) goto main__col_false;
 
     	# TODO: printf("%c", flag[row][col]);
+	# row = $t0
+	# col = $t1
+
+	la	$t2,	flag	# Load address of the array
+
+	mul	$t3,	$t0,	N_COLS 	# row * N_COLS
+	# $t3 is the offset for the start of our row
+
+	add	$t3,	$t3,	$t1
+	# $t3 is the index in the 1D array
+
+	mul	$t3,	$t3,	1
+	# size of each element is 1 byte
+
+	add	$t3,	$t2,	$t3
+	# $t3 is the address for our flag[row][col]
+
+	lb	$a0,	($t3)
+	li	$v0,	11
+	syscall
 
 main__col_step:
     	addi	$t1,	1	# col++;
