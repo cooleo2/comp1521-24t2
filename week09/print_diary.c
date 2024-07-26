@@ -15,11 +15,11 @@
 
 int main(void) {
 
-    char* home_path = getenv("HOME");
-    int home_path_len = strlen(home_path);
-    int final_length = strlen(DIARY_PATH) + home_path_len + 1;
-    char full_path[final_length];
-    snprintf(full_path, final_length, "%s%s", home_path, DIARY_PATH);
+    char *home_path = getenv("HOME");
+    int path_len = strlen(home_path) + strlen(DIARY_PATH) + 1;
+    char full_path[path_len];
+    snprintf(full_path, path_len, "%s%s", home_path, DIARY_PATH);
+
 
     // TODO: construct full_path in order to open the file 
     FILE *stream = fopen(full_path, "r");
@@ -35,4 +35,5 @@ int main(void) {
 
     fclose(stream);
     return 0;
+    
 }

@@ -50,15 +50,16 @@ void chmod_if_needed(char *pathname) {
         exit(1);
     }
 
-    // Publically Readable & Writeable
-    //uint32_t mask = 0x3;
-    //mask <<= 1; // 0000 0010
-                //   1110 0011
+    mode_t new_mode = s.st_mode;
+    // 0x7 = 0b111 -> Setting the right 3 bits
+    //new_mode |= 0x7;
 
+    // 0111    S_IWOTH 0010
+    // 0101    
 
-
-    mode_t new_mode = s.st_mode ^ S_IWOTH;
-
+    //         !S_IWOTH = 101
+    new_mode ^= S_IWOTH;
+    
     if (chmod(pathname, new_mode) != 0) {
         perror(pathname);
         exit(1);
